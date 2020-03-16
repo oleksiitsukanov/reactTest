@@ -46,39 +46,3 @@
     color: blue;
   }
 }
-
-.header{
-  background-color: white;
-  grid-area: h;
-}
-
-.header img{
-  height: 100%;
-  width: auto;
-}
-
-.navigation{
-  grid-area: n;
-  background-color: gray;
-  text-align: center;
-}
-
-.navigation_item{
-  margin: 20px;
-  color: white;
-}
-
-.mainProfile{
-  grid-area: c;
-  background-color: red;
-  color: white;
-}
-
-.mainProfile_head{
-  width: 100%;
-  height: auto;
-}
-
-.maiProfilet_wrapper{
-  padding: 40px;
-}

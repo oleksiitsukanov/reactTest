@@ -1,0 +1,15 @@
+
+.mainProfile{
+  grid-area: c;
+  background-color: red;
+  color: white;
+}
+
+.mainProfile_head{
+  width: 100%;
+  height: auto;
+}
+
+.maiProfilet_wrapper{
+  padding: 40px;
+}

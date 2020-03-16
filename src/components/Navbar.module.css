@@ -1,0 +1,14 @@
+.navigation{
+  grid-area: n;
+  background-color: gray;
+  text-align: center;
+}
+
+.navigation_item{
+  margin: 20px;
+  color: white;
+}
+
+.navigation_item.active{
+  text-decoration: underline;
+}
