@@ -1,0 +1,7 @@
+.wrapper{
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgb(228, 227, 141);
+  padding: 20px;
+  display: flex;
+}

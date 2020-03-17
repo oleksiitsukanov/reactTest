@@ -2,6 +2,8 @@
   grid-area: n;
   background-color: gray;
   text-align: center;
+  display: block;
+  height: fit-content;
 }
 
 .navigation_item{
@@ -14,6 +16,6 @@
   color: white;
 }
 
-.navigation_item.active a{
-  text-decoration: underline;
+.navigation_item .active{
+  color: rgb(145, 43, 43);
 }
