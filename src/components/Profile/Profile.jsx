@@ -5,7 +5,7 @@ import Post from './MyPosts/Post/Post';
 
 const Profile = (props) => {
 
-  let feeds = props.feeds.map( mas => <Post name={mas.name} message={mas.massege} stars={mas.stars} />);
+  let feeds = props.state.feeds.map( mas => <Post name={mas.name} message={mas.massege} stars={mas.stars} />);
 
   return (
     <div className={s.mainProfile}>

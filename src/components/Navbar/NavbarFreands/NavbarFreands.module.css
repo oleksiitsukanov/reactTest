@@ -1,0 +1,39 @@
+.freands{
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 60px;
+  margin-bottom: 40px;
+}
+
+.freands h3{
+  color: white;
+}
+
+.freand{
+  width: 30%;
+}
+
+.freandsItems{
+  display: flex;
+  justify-content: space-between;
+}
+
+.avatar{
+  background-color: white;
+  border-radius: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+.avatar img{
+  width: 100%;
+  height: auto;
+}
+
+.name{
+  color: white;
+  font-size: 20px;
+}
