@@ -1,0 +1,30 @@
+.ava img{
+  width: 120px;
+  margin-right: 40px;
+  border-radius: 50px;
+}
+
+.wrapper{
+  display: flex;
+  border: 1px solid white;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 10px 0px;
+}
+
+.feed{
+  display: flex;
+  flex-direction: column;
+}
+
+.message, .name{
+  width: 100%;
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.stars{
+  color: gold;
+}

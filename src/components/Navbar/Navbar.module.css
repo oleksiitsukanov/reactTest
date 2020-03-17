@@ -9,6 +9,11 @@
   color: white;
 }
 
-.navigation_item.active{
+.navigation_item a{
+  text-decoration: none;
+  color: white;
+}
+
+.navigation_item.active a{
   text-decoration: underline;
 }
