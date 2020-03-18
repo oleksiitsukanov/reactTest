@@ -38,3 +38,18 @@
   border-bottom: 1px solid #000;
   padding-bottom: 20px;
 }
+
+.messForm{
+  display: flex;
+}
+
+.messArea{
+  padding: 15px;
+  border-radius: 20px;
+  margin-right: 10px;;
+}
+
+.messBut{
+  background-color: white;
+  cursor: pointer;
+}

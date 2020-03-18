@@ -1,3 +1,5 @@
+import {rerenderTree} from './../render';
+
 let state = {
   dialogPage: {
   dial: [
@@ -29,5 +31,17 @@ let state = {
     { avatar: 'https://www.atptour.com/-/media/tennis/players/head-shot/2019/djokovic_head_ao19.png' , name: 'Ivan3' , id: 3}
   ]
 };
+
+export let addPost = (postMessage) => {
+  debugger;
+  let newPost = {
+    id: 5,
+    name: 'Vitalik',
+    stars: 20,
+    massege: postMessage
+  }
+  state.profilePage.feeds.push(newPost);
+  rerenderTree(state);
+}
 
 export default state;

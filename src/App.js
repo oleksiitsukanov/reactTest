@@ -9,6 +9,7 @@ import News from './components/News/News';
 import Media from './components/Media/Media';
 import state from './redux/state';
 
+
 const App = (props) => {
   return (
     <BrowserRouter>
@@ -16,7 +17,7 @@ const App = (props) => {
         <Header />
         <Navbar state={state.freandsPage} />
         <Route path="/dialogs" render={() => <Dialogs state={props.state.dialogPage} />} />
-        <Route path="/profile" render={() => <Profile state={props.state.profilePage} />} />
+        <Route path="/profile" render={() => <Profile state={props.state.profilePage} addPost={props.addPost}/>} />
         <Route path="/news" component={News} />
         <Route path="/media" component={Media} />
         {/* <Profile /> */}

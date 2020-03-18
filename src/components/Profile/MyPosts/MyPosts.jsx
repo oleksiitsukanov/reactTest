@@ -1,7 +1,16 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 
-const MyPosts = () => {
+const MyPosts = (props) => {
+
+  let newPostElement = React.createRef();
+
+  let addPost = () => { 
+    debugger;
+    props.addPost(newPostElement.current.value);
+    newPostElement.current.value = '';
+  }
+
   return(
     <div className={s.wrapper}>
         <div className={s.ava}>
@@ -12,10 +21,10 @@ const MyPosts = () => {
             <input type="text" placeholder="Name"/>
           </div>
           <div className={s.message}>
-            <textarea name="" id="" cols="30" rows="10" placeholder="Massege"></textarea>
+            <textarea name="" ref={newPostElement} cols="30" rows="10" placeholder="Massege"></textarea>
           </div>
           <div className={s.button}>
-            <button>Send</button>
+            <button onClick={addPost}>Send</button>
           </div>
         </div>
     </div>
