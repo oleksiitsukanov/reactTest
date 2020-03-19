@@ -2,14 +2,18 @@ import React from 'react';
 import s from './MyPosts.module.css';
 
 const MyPosts = (props) => {
-
+  debugger;
   let newPostElement = React.createRef();
 
   let addPost = () => { 
-    debugger;
-    props.addPost(newPostElement.current.value);
-    newPostElement.current.value = '';
+    props.state.addPost();
   }
+
+  let onPostChange = () => {
+    props.state.changeNewPostText(newPostElement.current.value);
+  }
+
+  let mess = props.state.getProfileMess();
 
   return(
     <div className={s.wrapper}>
@@ -21,7 +25,7 @@ const MyPosts = (props) => {
             <input type="text" placeholder="Name"/>
           </div>
           <div className={s.message}>
-            <textarea name="" ref={newPostElement} cols="30" rows="10" placeholder="Massege"></textarea>
+            <textarea onChange={onPostChange} name="" ref={newPostElement} cols="30" rows="10"  value={mess} />
           </div>
           <div className={s.button}>
             <button onClick={addPost}>Send</button>
