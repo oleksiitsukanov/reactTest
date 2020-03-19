@@ -8,14 +8,15 @@ let newMessPost = React.createRef();
 
 const Dialogs = (props) => {
   debugger;
-  let dialogsNames = props.state.getDialogsNames();
-  let dialogsMess = props.state.getDialogsMess();
-  let newMessText = props.state.getNewMessText();
+  let dialogsNames = props.store.getDialogsNames();
+  let dialogsMess = props.store.getDialogsMess();
+  let newMessText = props.store.getNewMessText();
   let messSend = () => {
-    props.state.addMess();
+    props.dispatch({type: 'ADD-MESS'});
   }
   let onMessChange = () =>{
-    props.state.chengeNewMessText(newMessPost.current.value);
+    let text = newMessPost.current.value;
+    props.dispatch({type: 'CHANGE-NEW-MWSS-TEXT', messText: text});
   }
   return (
     <div className={s.wrapper}>

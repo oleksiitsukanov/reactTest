@@ -7,25 +7,24 @@ import Dialogs from './components/Dialogs/Dialogs';
 import {Route, BrowserRouter} from "react-router-dom";
 import News from './components/News/News';
 import Media from './components/Media/Media';
-import state from './redux/state';
-
-
 const App = (props) => {
   return (
     <BrowserRouter>
       <div className="App">
         <Header />
-        <Navbar state={state} />
+        <Navbar store={props.store} />
         <Route 
           path="/dialogs" 
           render={() => <Dialogs 
-            state={props.state}
+            store={props.store}
+            dispatch={props.dispatch}
           />} 
         />
         <Route 
           path="/profile" 
             render={() => <Profile 
-              state={props.state}
+              store={props.store}
+              dispatch={props.dispatch}
             />} 
           />
         <Route path="/news" component={News} />

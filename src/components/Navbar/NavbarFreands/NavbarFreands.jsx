@@ -3,7 +3,7 @@ import s from './NavbarFreands.module.css';
 
 
 const NavbarFreands = (props) => {
-  var freands = props.state.getFreands();
+  var freands = props.store.getFreands();
   return (
     <div className={s.freands}>
       <h3>Freands</h3>

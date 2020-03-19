@@ -1,7 +1,5 @@
-let rerenderTree;
-
-let state = {
-  data: {
+let store = {
+  _state: {
     dialogPage: {
       dial: [
         { id: 1, name: 'Ivan' },
@@ -26,7 +24,8 @@ let state = {
         { id: 3 , name: 'Andrey' , stars: 100 , massege: 'mee too!'},
         { id: 4 , name: 'Nik' , stars: 25 , massege: 'I`m fine!'},
       ],
-      newPostText: 'Messege'
+      newPostText: 'Messege',
+      newPostName: 'Your Name'
     },
     freandsPage: [
       { avatar: 'https://www.atptour.com/-/media/tennis/players/head-shot/2019/djokovic_head_ao19.png' , name: 'Ivan1' , id: 1},
@@ -35,66 +34,76 @@ let state = {
     ]
   },
 
+  _callSubscriber(){},
+
   getNewMessText(){
-    return this.data.dialogPage.newMesText;
+    return this._state.dialogPage.newMesText;
   },
 
   getFreands(){
-    return this.data.freandsPage;
+    return this._state.freandsPage;
   },
 
   getDialogsNames(){
-    return this.data.dialogPage.dial;
+    return this._state.dialogPage.dial;
   },
 
   getDialogsMess(){
-    return this.data.dialogPage.mes;
+    return this._state.dialogPage.mes;
   },
 
   getProfileFeeds(){
-    return this.data.profilePage.feeds;
+    return this._state.profilePage.feeds;
   },
 
   getProfileMess(){
-    return this.data.profilePage.newPostText;
+    return this._state.profilePage.newPostText;
   },
 
-  addPost(){
-    let newPost = {
-      id: 5,
-      name: 'Vitalik',
-      stars: 20,
-      massege: this.data.profilePage.newPostText
+  getProfileName(){
+    return this._state.profilePage.newPostName;
+  },
+  
+
+  subscribe(observer){
+    debugger;
+    this._callSubscriber = observer;
+  },
+
+  dispatch(action){
+    if(action.type === 'ADD-POST'){
+      let newPost = {
+        id: 5,
+        name: this._state.profilePage.newPostName,
+        stars: 20,
+        massege: this._state.profilePage.newPostText
+      }
+      this._state.profilePage.feeds.push(newPost);
+      this._state.profilePage.newPostText = '';
+      this._state.profilePage.newPostName = '';
+      this._callSubscriber(this);
     }
-    this.data.profilePage.feeds.push(newPost);
-    this.data.profilePage.newPostText = '';
-    rerenderTree(this);
-  },
-  
-  changeNewPostText(postText){
-    this.data.profilePage.newPostText = postText;
-    rerenderTree(this);
-  },
-  
-  addMess(){
-    let mess ={
-      massege: this.data.dialogPage.newMesText
+    else if(action.type === 'CHAGE-NEW-POST-TEXT'){
+      this._state.profilePage.newPostText = action.postText;
+      this._state.profilePage.newPostName = action.postName;
+      this._callSubscriber(this);
     }
-    this.data.dialogPage.mes.push(mess);
-    this.data.dialogPage.newMesText = '';
-    rerenderTree(this);
-  },
-  
-  chengeNewMessText(messText){
-    this.data.dialogPage.newMesText = messText;
-    rerenderTree(this);
+    else if(action.type === 'ADD-MESS'){
+      let mess ={
+        massege: this._state.dialogPage.newMesText
+      }
+      this._state.dialogPage.mes.push(mess);
+      this._state.dialogPage.newMesText = '';
+      this._callSubscriber(this);
+    }
+    else if(action.type === 'CHANGE-NEW-MWSS-TEXT'){
+      debugger;
+      this._state.dialogPage.newMesText = action.messText;
+      this._callSubscriber(this);
+    }
   }
 };
 
-export const subscribe = (observer) => {
-  debugger;
-  rerenderTree = observer;
-}
 
 
-export default state;
+export default store;

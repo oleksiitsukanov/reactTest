@@ -4,16 +4,20 @@ import s from './MyPosts.module.css';
 const MyPosts = (props) => {
   debugger;
   let newPostElement = React.createRef();
+  let newPostElementName = React.createRef();
 
   let addPost = () => { 
-    props.state.addPost();
+    props.dispatch({type: 'ADD-POST'});
   }
 
   let onPostChange = () => {
-    props.state.changeNewPostText(newPostElement.current.value);
+    let text = newPostElement.current.value;
+    let name = newPostElementName.current.value;
+    props.dispatch({ type: 'CHAGE-NEW-POST-TEXT' , postText: text, postName: name});
   }
 
-  let mess = props.state.getProfileMess();
+  let mess = props.store.getProfileMess();
+  let pName = props.store.getProfileName();
 
   return(
     <div className={s.wrapper}>
@@ -22,7 +26,7 @@ const MyPosts = (props) => {
         </div>
         <div className={s.form}>
           <div className={s.name}>
-            <input type="text" placeholder="Name"/>
+            <input onChange={onPostChange} ref={newPostElementName} value={pName} type="text"/>
           </div>
           <div className={s.message}>
             <textarea onChange={onPostChange} name="" ref={newPostElement} cols="30" rows="10"  value={mess} />

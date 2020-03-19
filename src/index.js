@@ -5,21 +5,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
-import state from './redux/state';
-import {subscribe , addPost, changeNewPostText, addMess, chengeNewMessText} from './redux/state';
+import store from './redux/state';
 
-let rerenderTree = (state) => {
+let rerenderTree = (store) => {
   ReactDOM.render(
     <BrowserRouter>
       <App 
-        state={state} 
+        store={store} 
+        dispatch={store.dispatch.bind(store)}
       />
     </BrowserRouter>, document.getElementById('root'));
 }
 
-rerenderTree(state);
+rerenderTree(store);
 
-subscribe(rerenderTree);
+store.subscribe(rerenderTree);
 
 
 // If you want your app to work offline and load faster, you can change
