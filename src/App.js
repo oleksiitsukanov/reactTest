@@ -20,7 +20,7 @@ const App = (props) => {
             dispatch={props.dispatch}
           />} 
         />
-        <Route 
+        <Route
           path="/profile" 
             render={() => <Profile 
               store={props.store}

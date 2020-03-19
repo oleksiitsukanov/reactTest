@@ -3,12 +3,11 @@ import s from './NavbarFreands.module.css';
 
 
 const NavbarFreands = (props) => {
-  var freands = props.store.getFreands();
   return (
     <div className={s.freands}>
       <h3>Freands</h3>
       <div className={s.freandsItems}>
-      {freands.map( mas => {
+      {props.store.freandsPage.map( mas => {
         return(
           <div className={s.freand}>
             <div className={s.avatar}><img src={mas.avatar} alt=""/></div>

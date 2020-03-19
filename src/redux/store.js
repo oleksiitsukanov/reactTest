@@ -1,3 +1,8 @@
+import profileReducer from "./profileReducer";
+import dialogReducer from "./dialogReducer";
+import freandsReducer from "./freandsReducer";
+
+
 let store = {
   _state: {
     dialogPage: {
@@ -15,7 +20,7 @@ let store = {
         { massege: 'Hello everyone!2'},
         { massege: 'Hello everyone!3'},
       ],
-      newMesText: 'write here...'
+      newMesText: ''
     },
     profilePage: {
       feeds: [
@@ -24,8 +29,8 @@ let store = {
         { id: 3 , name: 'Andrey' , stars: 100 , massege: 'mee too!'},
         { id: 4 , name: 'Nik' , stars: 25 , massege: 'I`m fine!'},
       ],
-      newPostText: 'Messege',
-      newPostName: 'Your Name'
+      newPostText: '',
+      newPostName: ''
     },
     freandsPage: [
       { avatar: 'https://www.atptour.com/-/media/tennis/players/head-shot/2019/djokovic_head_ao19.png' , name: 'Ivan1' , id: 1},
@@ -66,44 +71,16 @@ let store = {
   
 
   subscribe(observer){
-    debugger;
     this._callSubscriber = observer;
   },
 
   dispatch(action){
-    if(action.type === 'ADD-POST'){
-      let newPost = {
-        id: 5,
-        name: this._state.profilePage.newPostName,
-        stars: 20,
-        massege: this._state.profilePage.newPostText
-      }
-      this._state.profilePage.feeds.push(newPost);
-      this._state.profilePage.newPostText = '';
-      this._state.profilePage.newPostName = '';
-      this._callSubscriber(this);
-    }
-    else if(action.type === 'CHAGE-NEW-POST-TEXT'){
-      this._state.profilePage.newPostText = action.postText;
-      this._state.profilePage.newPostName = action.postName;
-      this._callSubscriber(this);
-    }
-    else if(action.type === 'ADD-MESS'){
-      let mess ={
-        massege: this._state.dialogPage.newMesText
-      }
-      this._state.dialogPage.mes.push(mess);
-      this._state.dialogPage.newMesText = '';
-      this._callSubscriber(this);
-    }
-    else if(action.type === 'CHANGE-NEW-MWSS-TEXT'){
-      debugger;
-      this._state.dialogPage.newMesText = action.messText;
-      this._callSubscriber(this);
-    }
+
+    this._state.profilePage = profileReducer(this._state.profilePage, action);
+    this._state.dialogPage = dialogReducer(this._state.dialogPage, action);
+    this._state.freandsPage = freandsReducer(this._state.freandsPage, action);
+    this._callSubscriber(this);
   }
 };
-
-
 
 export default store;
