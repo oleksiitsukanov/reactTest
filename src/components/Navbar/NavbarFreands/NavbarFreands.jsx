@@ -7,7 +7,7 @@ const NavbarFreands = (props) => {
     <div className={s.freands}>
       <h3>Freands</h3>
       <div className={s.freandsItems}>
-      {props.store.freandsPage.map( mas => {
+      {props.navbarFreands.map( mas => {
         return(
           <div className={s.freand}>
             <div className={s.avatar}><img src={mas.avatar} alt=""/></div>

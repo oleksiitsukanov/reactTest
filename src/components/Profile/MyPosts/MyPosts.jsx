@@ -1,21 +1,20 @@
 import React from 'react';
 import s from './MyPosts.module.css';
-import { changeNewPostTextActionCreater ,postActionCreater } from '../../../redux/profileReducer';
 
 
 const MyPosts = (props) => {
   let newPostElement = React.createRef();
   let newPostElementName = React.createRef();
   let addPost = () => { 
-    props.dispatch(postActionCreater());
+    props.addPost();
   }
 
   let onPostChange = () => {
     let text = newPostElement.current.value;
     let name = newPostElementName.current.value;
-    props.dispatch(changeNewPostTextActionCreater(text, name));
+    debugger;
+    props.changeNewPostText(text, name);
   }
-  debugger;
   return(
     <div className={s.wrapper}>
         <div className={s.ava}>
@@ -23,10 +22,10 @@ const MyPosts = (props) => {
         </div>
         <div className={s.form}>
           <div className={s.name}>
-            <input onChange={onPostChange} ref={newPostElementName} value={props.store.profilePage.newPostName} type="text" placeholder="Your name"/>
+            <input onChange={onPostChange} ref={newPostElementName} value={props.profilePage.newPostName} type="text" placeholder="Your name"/>
           </div>
           <div className={s.message}>
-            <textarea onChange={onPostChange} name="" ref={newPostElement} cols="30" rows="10"  value={props.store.profilePage.newPostText} placeholder="Messege..."/>
+            <textarea onChange={onPostChange} name="" ref={newPostElement} cols="30" rows="10"  value={props.profilePage.newPostText} placeholder="Messege..."/>
           </div>
           <div className={s.button}>
             <button onClick={addPost}>Send</button>
