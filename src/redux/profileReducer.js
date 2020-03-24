@@ -14,22 +14,25 @@ let initialState = {
 
 export const profileReducer = (state = initialState , action) => {
   switch (action.type) {
-    case ADD_POST:
-      let newPost = {
-        id: 5,
-        name: state.newPostName,
-        stars: 20,
-        massege: state.newPostText
-      }
-      state.feeds.push(newPost);
-      debugger;
-      state.newPostText = '';
-      state.newPostName = '';
-      return state;
+    case ADD_POST:{
+      return {
+        ...state,
+        feeds: [...state.feeds, {
+          id: 5,
+          name: state.newPostName,
+          stars: 20,
+          massege: state.newPostText
+        }],
+        newPostText : '',
+        newPostName : ''
+      };
+    }
     case CHAGE_NEW_POST_TEXT:
-      state.newPostText = action.postText;
-      state.newPostName = action.postName;
-      return state;
+      {
+        return {...state,
+          newPostText : action.postText,
+          newPostName : action.postName};
+      }
     default:
       return state;;
   }

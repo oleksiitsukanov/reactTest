@@ -6,9 +6,8 @@ import './index.css';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
 import store from './redux/reduxStore';
-import { Provider } from './StoreContext';
+import {Provider} from 'react-redux';
 
-let rerenderTree = (state) => {
   ReactDOM.render(
     <BrowserRouter>
       <Provider store={store}>
@@ -18,14 +17,7 @@ let rerenderTree = (state) => {
       />
       </Provider>
     </BrowserRouter>, document.getElementById('root'));
-}
 
-rerenderTree(store.getState());
-
-store.subscribe(() => {
-  let state = store.getState();
-  rerenderTree(state);
-});
 
 
 // If you want your app to work offline and load faster, you can change

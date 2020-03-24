@@ -21,16 +21,15 @@ let initialState = {
 
 export const dialogReducer = (state = initialState , action) => {
   switch (action.type) {
-    case ADD_MESS:
-      let mess ={
-        massege: state.newMesText
-      }
-      state.mes.push(mess);
-      state.newMesText = '';
-      return state;
-    case CHANGE_NEW_MESS_TEXT:
-      state.newMesText = action.messText;
-      return state;
+    case ADD_MESS: {
+      return {...state,
+        mes: [...state.mes, {massege: state.newMesText}],
+        newMesText : ''};
+    }
+    case CHANGE_NEW_MESS_TEXT: {
+      return {...state,
+        newMesText : action.messText};
+    }
     default:
       return state;
   }

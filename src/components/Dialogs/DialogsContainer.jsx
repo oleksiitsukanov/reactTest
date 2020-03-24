@@ -1,27 +1,25 @@
-import React from 'react';
 import { changeNewDialogMessActionCreator, dialogActionCreator } from '../../redux/dialogReducer';
 import Dialogs from './Dialogs';
-import StoreContext from '../../StoreContext';
+import { connect } from 'react-redux';
 
 
-const DialogsContainer = () => {  
-  return (
-    <StoreContext.Consumer>
-      { store => {
-        debugger;
-        let state = store.getState();
-        let messSend = () => store.dispatch(dialogActionCreator());
-        let onMessChange = (text) => store.dispatch(changeNewDialogMessActionCreator(text));
-      return (
-        <Dialogs 
-          messSend={messSend} 
-          onMessChange={onMessChange} 
-          dialogPage={state.dialogPage} />
-          )
-        }
-      }
-    </StoreContext.Consumer>
-  );
+let mapStateToProps = (state) => {
+  return {
+    dialogPage: state.dialogPage
+  };
 };
+
+let mapDispatchToProps = (dispatch) => {
+  return {
+    onMessChange: (text) => {
+      dispatch(changeNewDialogMessActionCreator(text));
+    },
+    messSend: () => {
+      dispatch(dialogActionCreator());
+    }
+  };
+};
+
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
 
 export default DialogsContainer;
