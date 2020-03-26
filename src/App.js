@@ -7,7 +7,8 @@ import {Route, BrowserRouter} from "react-router-dom";
 import News from './components/News/News';
 import Media from './components/Media/Media';
 import NavbarContainer from './components/Navbar/NavbarContainer';
-import Users from './components/Users/Users';
+import UsersContainer from './components/Users/UsersContainer';
+
 const App = (props) => {
   return (
     <BrowserRouter>
@@ -24,7 +25,7 @@ const App = (props) => {
           />
         <Route
           path="/users" 
-            render={() => <Users />} 
+            render={() => <UsersContainer />} 
           />
         <Route path="/news" component={News} />
         <Route path="/media" component={Media} />

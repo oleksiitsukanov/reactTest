@@ -3,12 +3,7 @@ const UNFOLLOW = 'UNFOLLOW';
 const SETUSERS = 'SETUSERS';
 
 let initialState = {
-  users: [
-    { id: 1 , followed: true,  fullName: 'Alexey' , username: 'user1', profileLink : '#'},
-    { id: 2 , followed: false,  fullName: 'Dima' , username: 'user2', profileLink : '#'},
-    { id: 3 , followed: true,  fullName: 'Andrey' , username: 'user3', profileLink : '#'},
-    { id: 4 , followed: true,  fullName: 'Nik' , username: 'user4', profileLink : '#'},
-  ]
+  users: []
 }
 
 export const usersReducer = (state = initialState , action) => {
@@ -60,13 +55,5 @@ export const setUsersActionCreater = (users) => {
     type: SETUSERS, users
   }
 };
-
-export const changeNewPostTextActionCreater = (text, name) => {
-  return { 
-    type: CHAGE_NEW_POST_TEXT, 
-    postText: text, 
-    postName: name
-  }
-}
 
 export default usersReducer;
