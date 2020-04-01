@@ -73,3 +73,12 @@
 .moreLink button{
   max-width: 200px;
 }
+
+.navPages span{
+  margin: 10px;
+  cursor: pointer;
+}
+
+.selectedPage{
+  font-weight: bold;
+}
